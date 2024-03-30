@@ -80,7 +80,6 @@ class TestController extends Controller
     {
         $test = Test::where('id', $id)->firstOrFail();
 
-        // Retrieve users who have at least one answer for the given test
         $userIds = UserAnswer::where('test_id', $id)->pluck('user_id')->toArray();
         $users = User::whereIn('id', $userIds)->get();
 
